@@ -521,6 +521,46 @@
     .tname { font-weight: 700; font-size: .875rem; }
     .trole { font-size: .78rem; color: var(--muted); }
 
+    /* ─────────────── NEW TO THIS ─────────────── */
+    #new-to-this { background: var(--white); }
+
+    .ntt-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 22px; margin-top: 0; }
+
+    .ntt-card {
+      padding: 36px 32px; border-radius: var(--r-lg);
+      border: 1px solid transparent;
+      transition: transform .3s ease, box-shadow .3s ease;
+    }
+    .ntt-card:hover { transform: translateY(-5px); box-shadow: var(--sh-md); }
+    .ntt-card:nth-child(1) { background: var(--peach);  border-color: var(--peach2); }
+    .ntt-card:nth-child(2) { background: var(--sky);    border-color: var(--sky2); }
+    .ntt-card:nth-child(3) { background: var(--lav);    border-color: var(--lav2); }
+
+    .ntt-icon {
+      width: 50px; height: 50px; border-radius: var(--r-sm);
+      background: #fff; box-shadow: var(--sh-sm);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem; margin-bottom: 18px;
+    }
+    .ntt-card h3 { margin-bottom: 10px; font-size: 1.1rem; }
+    .ntt-card p  { color: var(--muted); font-size: .9rem; line-height: 1.72; }
+
+    .ntt-notice {
+      margin-top: 36px; padding: 28px 32px;
+      background: var(--bg-soft); border-radius: var(--r-lg);
+      border: 1.5px solid var(--border2);
+      display: flex; gap: 18px; align-items: flex-start;
+    }
+    .ntt-notice-icon {
+      font-size: 1.4rem; flex-shrink: 0; line-height: 1; margin-top: 2px;
+    }
+    .ntt-notice p { color: var(--muted); font-size: .9rem; line-height: 1.75; }
+    .ntt-notice p strong { color: var(--ink); }
+
+    @media (max-width: 960px) {
+      .ntt-grid { grid-template-columns: 1fr; }
+    }
+
     /* ─────────────── CTA ─────────────── */
     #cta {
       background: linear-gradient(135deg, var(--lav) 0%, var(--pink) 50%, var(--sky) 100%);
@@ -608,6 +648,7 @@
       <li><a href="#services">Services</a></li>
       <li><a href="#process">Process</a></li>
       <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#new-to-this">Getting Started</a></li>
     </ul>
     <a href="#cta" class="nav-cta">Get a Quote</a>
   </div>
@@ -878,6 +919,43 @@
 </section>
 
 
+<!-- ══════════════ NEW TO THIS ══════════════ -->
+<section id="new-to-this">
+  <div class="wrap">
+    <div class="sec-header">
+      <div class="sec-header-left">
+        <div class="eyebrow sv-fade-up"><span class="eyebrow-dot"></span>New to This?</div>
+        <h2 class="sv-fade-up">Don't know what you're doing? <br>We got you.</h2>
+        <p class="sec-desc sv-fade-up">Domains, hosting, DNS — it sounds like a foreign language. Here's the plain-English breakdown of what you actually need to get your site live.</p>
+      </div>
+    </div>
+
+    <div class="ntt-grid">
+      <div class="ntt-card sv-scale">
+        <div class="ntt-icon">🌐</div>
+        <h3>Your Domain</h3>
+        <p>Your domain is your web address — the <strong>yourname.com</strong> part. You register it through a registrar like Namecheap or Google Domains and pay a small yearly fee (usually $10–$20/yr) to keep it.</p>
+      </div>
+      <div class="ntt-card sv-scale d1">
+        <div class="ntt-icon">☁️</div>
+        <h3>Hosting</h3>
+        <p>Hosting is the server that stores your website files and serves them to visitors. Without it, your site has nowhere to live. Popular options include Netlify, Vercel, and Cloudflare Pages — many have generous free tiers.</p>
+      </div>
+      <div class="ntt-card sv-scale d2">
+        <div class="ntt-icon">🔗</div>
+        <h3>DNS</h3>
+        <p>DNS is the "phone book" of the internet — it connects your domain name to your hosting server. We handle the configuration for you, but the records live with your domain registrar or host.</p>
+      </div>
+    </div>
+
+    <div class="ntt-notice sv-fade-up">
+      <div class="ntt-notice-icon">💡</div>
+      <p><strong>Just so you know:</strong> We build your website — we don't provide hosting or manage your domain for you. Once your site is delivered, you'll need a hosting service and a domain registrar, both of which charge their own <strong>recurring fees</strong>. Don't worry though — we'll walk you through exactly what to sign up for and get everything connected.</p>
+    </div>
+  </div>
+</section>
+
+
 <!-- ══════════════ FIRST CLIENT ══════════════ -->
 <section id="testimonials">
   <div class="wrap">
@@ -986,7 +1064,7 @@
 
   /* ── NAV scroll-state + spy ── */
   const nav = document.querySelector('nav');
-  const spySections = ['services', 'process', 'pricing'];
+  const spySections = ['services', 'process', 'pricing', 'new-to-this'];
   const spyLinks = {};
   spySections.forEach(id => {
     spyLinks[id] = document.querySelector(`.nav-links a[href="#${id}"]`);
